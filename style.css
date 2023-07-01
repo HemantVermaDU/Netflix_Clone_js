@@ -1,9 +1,4 @@
 /* Global Styles */
-:root {
-  --primary-color: #e50914;
-  --dark-color: #141414;
-  --light-color: #f4f4f4;
-}
 *{
   box-sizing: border-box;
   margin: 0;
@@ -11,8 +6,7 @@
 }
 html,body{
   font-family: Helvetica, Arial, sans-serif;
-  background: #000;
-  color: #999;
+  background:#141414;
 }
 .header-cont{
 	display:flex;
@@ -21,12 +15,24 @@ html,body{
 }
 .container{
 	width: 100%;
-	max-width: 1242px;
+	max-width: 1250px;
 	margin: 0 auto;
 }
+/* *::-webkit-scrollbar{
+	display: none;
+} */
 /* Header Styles */
 header{
-	background-color:gray;
+	background-color:transparent;
+	position: fixed;
+	z-index: 100;
+	left: 0;
+	top: 0;
+	width: 100%;
+	transition: all ease 600ms;
+}
+header.black-bg{
+	background-color: rgb(20,20,20);
 }
 .left-cont,.right-cont{
 	display:flex;
@@ -35,12 +41,12 @@ header{
 }
 .item{
 	color: #fff;
-	opacity: .5;
+	 
 	margin-right: 20px;
 }
 .item.active{
 	color: #fff;
-	opacity:1;
+	font-weight: 700;
 }
 .header-brand{
 	max-width: 100px;
@@ -57,12 +63,138 @@ header{
 }
 .right-cont svg{
   	color: white;
-  	background: white;
+  
 }
 
-@media (max-width: 767px) {
-	.main-nav{
-		display: none;
-	}
+/* movie section */
+.movie-section-heading{
+	cursor: pointer;
+	color: white;
+	font-weight: 500;
+	line-height: 1.2;
+	font-size:20px;
+	margin: 25px 0px 8px;
+}
+.explore-nudge{
+	font-size: 15px;
+	display: none;
+	color: #54b9c5;
+}
+.movie-section-heading:hover .explore-nudge {
+    display: inline-block;
 }
 
+.movie-section{
+
+}
+.movie-row{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	overflow-x: scroll;
+}
+.movie-item{
+	width: 245px;
+	object-fit: contain;
+	margin-right: 6px;
+	border-radius: 4px;
+}
+.movie-item:hover{
+   transform: scale(1.3);
+   transition:transform ease 1s;
+}
+.move-item-img{
+    width: inherit;
+}
+.movie-item .iframe-wrap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: none;
+    border: none;
+    outline: none;
+}
+.movie-item:hover .iframe-wrap{
+    display: block;
+}
+.movie-item:hover{
+    transform: scale(1.3);
+    transition: transform linear 300ms;
+}
+/* Banner section */
+.banner-section{
+	background-size: cover;
+	background-repeat: no-repeat;
+	min-height: 98vh;
+	position: relative;
+	padding-top: 80px;
+}
+.banner-content{ 
+    padding-top:70px;
+}
+.banner-title{
+	color: white;
+	font-size: 84px;
+	line-height: 1.1;
+	margin: 0;
+	margin-bottom: 16px;
+}
+.banner-info{
+	color: white;
+	margin-bottom:14px;
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 1.5;
+}
+.banner-overview{
+	font-size: 16.4px;
+	line-height: 1.33;
+	color: white;
+	max-width: 40%;
+}
+.action-button{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top: 20px;
+}
+.action-btn{
+	background-color: white;
+   padding: 9px 23px;
+   border-radius: 4px;
+   border: none;
+   margin-right: 12px;
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+    gap: 5px;
+}
+.action-btn .btn-info{
+	filter: invert(100%);
+}
+.action-btn:last-child{
+	background-color: rgba(0, 0, 0, .6);
+	color: white;
+}
+.fade-bannerbottom{
+	height: 120px;
+	background: linear-gradient(180deg,transparent,rgba(37, 37, 37,.61),#141414);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+
+/* Banner Section End */
+@media (max-width:767px) {
+    .main-nav{
+        display: none;
+    }
+    .banner__overview, .banner__title{
+        max-width: 100%;
+    }
+}
